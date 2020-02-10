@@ -65,7 +65,7 @@ export default ({ data }) => {
         </div>
         <div
           className="lg:text-xl"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: post.content.encoded }}
         />
       </div>
 
@@ -105,11 +105,14 @@ export const query = graphql`
     feedGatsbyBlog(id: { eq: $slug }) {
       title
       pubDate
-      content
+      content {
+        encoded
+      }
       itunes {
         duration
         image
         subtitle
+        summary
       }
       enclosure {
         url

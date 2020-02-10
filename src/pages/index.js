@@ -26,17 +26,17 @@ const IndexPage = ({ data }) => {
 
       <div>
         {/* ###############################    HEADER START ########################################### */}
-        <div className={`${albumStyle.slope} bg-gray-200`} />
+        <div className={`${albumStyle.slope}`} />
         <div
           className=" max-w-lg md:max-w-2xl pl-12 pt-16 pr-12 md:flex md:justify-end 
           md:flex-row-reverse m-auto md:pl-4 md:pr-4 lg:max-w-3xl xl:max-w-5xl  xl:m-auto relative mdx:pt-24 lgx:max-w-960 lgx:px-12  xl-mx-0"
         >
           <div className="md:ml-8 md:mt-3 lg:ml-12">
-            <div className="text-4xl font-medium md:text-3xl md:font-bold text-gray-900 lg:text-4xl">
+            <div className="text-3xl font-medium md:text-3xl md:font-bold text-gray-900 lgx:text-4xl">
               {data.site.siteMetadata.title}
             </div>
             <div className="text-base mt-3 md:text-base text-gray-900">
-              By {data.site.siteMetadata.author}
+              {/* By {data.site.siteMetadata.author} */}
             </div>
             <ul className="md:flex mt-6 hidden text-gray-100">
               {/* <li className="mr-8">
@@ -128,16 +128,12 @@ const IndexPage = ({ data }) => {
            md:text-xl"
           />
           <div className="mt-3 text-gray-700 leading-relaxed md:text-xl">
-            Hey, meet Bilal, Kwaku, Patrick &amp; Tom. 4 Black &amp; Mixed-Race
-            guys who became friends whilst studying at Cambridge University.
-            Join us as we talk about life before, during and well - after 'The
-            Bridge'. Expect chats about life, and our own experiences
+            The Increase Your Impact Podcast with Justin Su'a is for leaders --
+            that means you! Each episode is aimed to provide you with insights,
+            principles and strategies to help you lead yourself so that you can
+            lead others at work, home, and in life.
           </div>
-          <div className="mt-3 text-gray-700 leading-relaxed md:text-xl">
-            Cast:
-            <br /> Kwaku: @KwakuDapaah_ <br /> Patrick: @CariocoLondrino <br />{" "}
-            Bilal: @Tweetsbybilal <br /> Tom: @TomTheEconomist
-          </div>
+          <div className="mt-3 text-gray-700 leading-relaxed md:text-xl" />
           <ul className={`flex justify-center mt-12 md:mt-16 text-gray-900`}>
             {/* <li className="">
               <a href={data.site.siteMetadata.facebook}>
@@ -237,10 +233,10 @@ const IndexPage = ({ data }) => {
                       {node.title}
                     </div>
                     <div className="mt-2 md:hidden">
-                      {formatSubTitle(node.itunes.summary)}
+                      {formatSubTitle(node.contentSnippet)}
                     </div>
                     <div className="mt-2 hidden md:block">
-                      {node.itunes.summary}
+                      {node.contentSnippet}
                     </div>
                     <div className="text-sm text-gray-700 font-medium mt-2">
                       {formatTime(node.itunes.duration)}
@@ -253,7 +249,9 @@ const IndexPage = ({ data }) => {
           <div className="flex justify-center mt-16 lgx:max-w-960 lgx:mx-12">
             <button
               onClick={() => setCount(count + 5)}
-              className="bg-teal-500 text-white font-bold py-3 px-8 rounded"
+              className={`${
+                albumStyle.footer
+              } text-gray-900 font-bold py-3 px-8 rounded`}
             >
               <span>Load More</span>
             </button>
@@ -273,7 +271,7 @@ export const query = graphql`
           title
           pubDate
           id
-          content
+          contentSnippet
           itunes {
             duration
             summary
